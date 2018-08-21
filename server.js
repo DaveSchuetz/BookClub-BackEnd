@@ -13,5 +13,5 @@ app.use(methodOverride("_method"));
 app.use(require("./src/routes/index.js"));
 
 app.listen(app.get("port"), () => {
-    console.log("Server listening on port " + app.get("port"));
+  console.log("Server listening on port " + app.get("port"));
 });
