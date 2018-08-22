@@ -4,9 +4,18 @@ const Comment = require("../models/Comment");
 
 module.exports = {
     show: (req, res) => {
-        Book.findOne({ _id: req.params.id })
+        Book.findById(req.params.id)
             .then((books) => {
-                res.JSON(books)
+                res.json(books)
+            })
+    },
+    all: (req, res) => {
+        Book.find()
+            .then((books) => {
+                res.json(books)
+            })
+            .catch((err) => {
+                console.log(err)
             })
     },
     search: (req, res) => {
