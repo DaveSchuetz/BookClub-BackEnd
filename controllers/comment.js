@@ -4,7 +4,7 @@ const Comment = require("../models/Comment");
 module.exports = {
   index: (req, res) => {
     Comment.find({}).then(comments => {
-      res.render("NOT SURE WHERE", { comments }); //TODO:  location
+      res.json(comments);
     });
   },
   create: (req, res) => {
@@ -14,7 +14,7 @@ module.exports = {
       Book.findOne({ _id: req.body.book }).then(book => {
         book.comments.push(comment);
         comment.save(err => {
-          res.redirect("NOT SURE WHERE"); //TODO: location
+          res.json(comments);
         });
       });
     });
@@ -32,7 +32,7 @@ module.exports = {
   },
   delete: (req, res) => {
     Comment.findOneAndRemove({ _id: req.params.id }).then(comment => {
-      res.redirect("/");
+      res.redirect("/book/:id");
     });
   }
 };
