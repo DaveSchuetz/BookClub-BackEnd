@@ -19,10 +19,10 @@ module.exports = {
             })
     },
     search: (req, res) => {
-        res.render("/book/search")
+        res.json("/book/search/")
     },
     result: (req, res) => {
-        res.render("/book/search", function (req, res) {
+        res.json("/book/search", function (req, res) {
             db.collection("books").find({
                 "$text": {
                     "$search": req.body.query
@@ -39,6 +39,8 @@ module.exports = {
                             $meta: "textScore"
                         }
                     }
+                }).toArray(function (err, books) {
+                    res.send(books)
                 })
         })
     }
