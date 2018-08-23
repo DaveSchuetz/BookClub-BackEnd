@@ -8,7 +8,7 @@ router.get("/book/search/", bookController.result)
 router.get("/book", bookController.all)
 router.get("/book/:id", bookController.show)
 
-router.post("/book/search/", bookController.result)
+router.post("/book/search", bookController.result)
 
 
 module.exports = router;
