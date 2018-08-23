@@ -21,13 +21,13 @@ module.exports = {
         res.json(books)
     },
     result: (req, res) => {
-            Book.find({
-                "$text": {
-                    "$search": "tom"
-                }
-                }).then((books) => {
-                    res.json(books)
-                })
-        }
+        Book.find({
+            "$text": {
+                "$search": "tom"
+            }
+        }).then((books) => {
+            res.json(books)
+        })
     }
+}
 
