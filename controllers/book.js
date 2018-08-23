@@ -1,5 +1,4 @@
 const Book = require("../models/Book");
-const Comment = require("../models/Comment");
 
 
 module.exports = {
@@ -19,29 +18,16 @@ module.exports = {
             })
     },
     search: (req, res) => {
-        res.json("/book/search/")
+        res.json(books)
     },
     result: (req, res) => {
-        res.json("/book/search", function (req, res) {
-            db.collection("books").find({
+            Book.find({
                 "$text": {
-                    "$search": req.body.query
+                    "$search": "tom"
                 }
-            }, {
-                    title: 1,
-                    author: 1,
-                    textScore: {
-                        $meta: "textScore"
-                    }
-                }, {
-                    sort: {
-                        textScore: {
-                            $meta: "textScore"
-                        }
-                    }
-                }).toArray(function (err, books) {
-                    res.send(books)
+                }).then((books) => {
+                    res.json(books)
                 })
-        })
+        }
     }
-}
+

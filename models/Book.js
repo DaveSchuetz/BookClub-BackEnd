@@ -9,11 +9,6 @@ const Book = new Schema({
     image: String,
 
 })
-
+Book.index({title: 'text', author: 'text'})
 
 module.exports = mongoose.model("Book", Book)
-
-// {
-//     Book: mongoose.model("Book", Book),
-//     // Comment: mongoose.model("Comment", Comment)
-// }
