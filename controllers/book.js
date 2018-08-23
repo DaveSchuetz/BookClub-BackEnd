@@ -17,9 +17,6 @@ module.exports = {
                 console.log(err)
             })
     },
-    search: (req, res) => {
-        res.json(books)
-    },
     result: (req, res) => {
             Book.find({
                 "$text": {
