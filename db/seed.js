@@ -4,22 +4,22 @@ Book.find({}).remove(() => {
   Book.create({
     title: "Hunt for Red October",
     author: "Tom Clancy",
-    description: "Book about nothing",
-    image: "http://www.pictureGoesHere.com/1"
+    description: "Soviet submarine captain Marko Ramius as he seemingly goes rogue with his country’s cutting-edge ballistic missile submarine Red October.",
+    image: "https://images-na.ssl-images-amazon.com/images/I/71FMG3F6RAL.gif"
   });
 
   Book.create({
-    title: "Partiot Games",
+    title: "Patriot Games",
     author: "Tom Clancy",
-    description: "Book about nothing",
-    image: "http://www.pictureGoesHere.com/2"
+    description: "Jack Ryan is the target of Irish terrorist group Ulster Liberation Army for thwarting their kidnapping attempt on the Prince and Princess of Wales in London.",
+    image: "https://upload.wikimedia.org/wikipedia/en/thumb/4/44/PatriotGames.JPG/220px-PatriotGames.JPG"
   });
 
   Book.create({
     title: "Clear and Present Danger",
     author: "Tom Clancy",
-    description: "Book about nothing",
-    image: "http://www.pictureGoesHere.com/3"
+    description: "The President of the United States, who is running for reelection, finds a fierce opponent in Ohio Governor J. Robert Fowler, who has rallied the American public behind his administration’s failures in the War on Drugs.",
+    image: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c8/Clear_And_Present_Danger_cover.jpg/220px-Clear_And_Present_Danger_cover.jpg"
   });
 
   Book.create({
