@@ -23,11 +23,12 @@ module.exports = {
     result: (req, res) => {
         Book.find({
             "$text": {
-                "$search": "tom"
+                "$search": req.body.query
             }
         }).then((books) => {
             res.json(books)
         })
     }
 }
+
 
