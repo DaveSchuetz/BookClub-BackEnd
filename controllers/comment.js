@@ -3,10 +3,15 @@ const Comment = require("../models/Comment");
 
 module.exports = {
   index: (req, res) => {
-    Comment.find({}).then(comments => {
-      res.json(comments);
-    });
+    Comment.find({})
+      .then(comments => {
+        res.json(comments);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   },
+
   create: (req, res) => {
     Comment.create({
       comment: req.body.comment.content //TODO:  is this correct?
@@ -19,17 +24,21 @@ module.exports = {
       });
     });
   },
+
   update: (req, res) => {
-    let { comment } = req.body;
-    Comment.findOne({ _id: req.params.id }).then(comment => {
-      comment.comments.push({
-        comment
-      });
-      comment.save(err => {
-        res.redirect("NOT SURE WHERE"); //TODO: location
-      });
+    //let { comment } = req.body;
+    Comment.findByIdAndUpdate(
+      { _id: req.params.id },
+      {
+        $push: {
+          comment: req.body.comment
+        }
+      }
+    ).then(comment => {
+      res.redirect("/book/:id");
     });
   },
+
   delete: (req, res) => {
     Comment.findOneAndRemove({ _id: req.params.id }).then(comment => {
       res.redirect("/book/:id");

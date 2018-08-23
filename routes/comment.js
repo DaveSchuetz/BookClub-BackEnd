@@ -8,4 +8,3 @@ router.put("/comment/:id", commentController.update);
 router.delete("/comment/:id", commentController.delete);
 
 module.exports = router;
-
