@@ -18,4 +18,6 @@ Application is deployed on Heroku here: https://community-kitchen.herokuapp.com/
 
 ## Written By
 
-- **Dave Schuetz** **Albert Whitlock** **Josh Pearson**
+- **Dave Schuetz** 
+- **Albert Whitlock** 
+- **Josh Pearson**
