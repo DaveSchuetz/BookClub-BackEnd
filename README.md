@@ -1,4 +1,4 @@
-#Community Kitchen - Web Application
+# BookClub - MERN Group Project
 
 ## Description
 
