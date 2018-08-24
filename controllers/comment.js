@@ -28,16 +28,9 @@ module.exports = {
   },
 
   update: (req, res) => {
-    //let { comment } = req.body;
-    Comment.findByIdAndUpdate(
-      { _id: req.params.id },
-      {
-        $push: {
-          comment: req.body.comment
-        }
-      }
-    ).then(comment => {
-      res.redirect("/book/:id");
+    Comment.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+      if (err) return next(err);
+      res.json(post);
     });
   },
 
