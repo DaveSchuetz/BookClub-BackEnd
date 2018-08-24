@@ -1,12 +1,14 @@
 const Book = require("../models/Book");
+const Comment = require("../models/Comment")
 
 
 module.exports = {
     show: (req, res) => {
         Book.findById(req.params.id)
-            .then((books) => {
-                res.json(books)
-            })
+        .populate('comments')
+        .then((comments) =>{
+            res.json(comments)
+        })
     },
     all: (req, res) => {
         Book.find()

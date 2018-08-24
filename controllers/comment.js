@@ -14,15 +14,17 @@ module.exports = {
 
   create: (req, res) => {
     Comment.create({
-      comment: req.body.comment.content //TODO:  is this correct?
+      comment: req.body.content,
+      book: req.body.book
     }).then(comment => {
-      Book.findOne({ _id: req.body.book }).then(book => {
-        book.comments.push(comment);
-        comment.save(err => {
-          res.json(comments);
-        });
-      });
-    });
+      Book.findById(req.body.book).then(book =>{
+        book.comments.push(comment)
+        book.save(err =>{
+          res.json(comment)
+        })
+      })
+    })
+      
   },
 
   update: (req, res) => {
@@ -40,8 +42,9 @@ module.exports = {
   },
 
   delete: (req, res) => {
-    Comment.findOneAndRemove({ _id: req.params.id }).then(comment => {
-      res.redirect("/book/:id");
-    });
+    Comment.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+      if (err) return next(err);
+      res.json(post);
+    })
   }
 };
