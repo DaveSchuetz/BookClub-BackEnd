@@ -1,12 +1,46 @@
 const Book = require("../models/Book");
+const Comment = require("../models/Comment")
+const mongoose = require('./connection')
+mongoose.Promise = Promise
 
 Book.find({}).remove(() => {
+  Comment.find({}).remove(() => {
   Book.create({
     title: "Hunt for Red October",
     author: "Tom Clancy",
     description: "Soviet submarine captain Marko Ramius as he seemingly goes rogue with his country’s cutting-edge ballistic missile submarine Red October.",
     image: "https://images-na.ssl-images-amazon.com/images/I/71FMG3F6RAL.gif"
-  });
+    
+  }).then(book =>{
+    Promise.all([
+      Comment.create({
+        comment:"Test 1",
+        book: book._id
+      }).then(comment =>{
+        book.comments.push(comment)
+      }),
+      Comment.create({
+        comment:"Test 2",
+        book: book._id
+      }).then(comment =>{
+        book.comments.push(comment)
+      }),
+      Comment.create({
+        comment:"Test 3",
+        book: book._id
+      }).then(comment =>{
+        book.comments.push(comment)
+      }),
+      Comment.create({
+        comment:"Test 4",
+        book: book._id
+      }).then(comment =>{
+        book.comments.push(comment)
+      })
+    ]).then(() => {
+      book.save(err => console.log(err))
+    })
+  })
 
   Book.create({
     title: "Patriot Games",
@@ -233,5 +267,6 @@ Book.find({}).remove(() => {
     description:
       "It tells of a girl named Alice falling through a rabbit hole into a fantasy world populated by peculiar, anthropomorphic creatures.",
     image: "https://images.penguinrandomhouse.com/cover/9780141321073"
+  });
   });
 });
